@@ -5,15 +5,20 @@ const port = 8800;
 app.get('/tasks', (req, res) => {
   const tasks = [
     {
-      id: "123456",
+      id: "1",
       isCompleted: false,
-      description: "Walk the dog"
+      description: "Estudiar para la clase"
     },
     {
-      id: "789012",
+      id: "2",
       isCompleted: true,
-      description: "Buy groceries"
-    }
+      description: "Comprar libros"
+    },
+    {
+      id: "3",
+      isCompleted: false,
+      description: "Hacer la tarea"
+    },
   ];
 
   res.json(tasks);
