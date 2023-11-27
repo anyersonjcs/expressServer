@@ -5,6 +5,16 @@ const listViewRouter = require('./list-view-router');
 const listEditRouter = require('./list-edit-router');
 
 
+// Middleware para gestionar métodos HTTP válidos
+const methodHandler = (req, res, next) => {
+  if (req.method === 'GET' || req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE') {
+    next();
+  } else {
+    res.status(400).send('Método HTTP no válido');
+  }
+};
+
+app.use(methodHandler);
 app.use(listViewRouter);
 app.use(listEditRouter);
 

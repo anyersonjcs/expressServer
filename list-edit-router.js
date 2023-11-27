@@ -19,4 +19,15 @@ router.put('/update-task/:taskId', (req, res) => {
   res.send(`Tarea con ID ${taskId} actualizada exitosamente`);
 });
 
+
+// Middleware para manejar errores en solicitudes POST y PUT
+const errorHandler = (err, req, res, next) => {
+  if (err) {
+    res.status(400).send('Error en la solicitud');
+  } else {
+    next();
+  }
+};
+
+
 module.exports = router;

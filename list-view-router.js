@@ -26,4 +26,21 @@ router.get('/incomplete-tasks', (req, res) => {
   res.json(incompleteTasks);
 });
 
+
+
+// Middleware para gestionar parámetros correctos
+const paramHandler = (req, res, next) => {
+  if (req.params.id && !isNaN(req.params.id)) {
+    next();
+  } else {
+    res.status(400).send('Parámetros incorrectos');
+  }
+};
+
+router.get('/tasks/:id', paramHandler, (req, res) => {
+  const taskId = req.params.id;
+  res.send(`Mostrando detalles de la tarea con ID ${taskId}`);
+});
+
 module.exports = router;
+
